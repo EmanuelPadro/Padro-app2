@@ -46,6 +46,9 @@ public class InventoryManagementApplication extends Application {
         table.setItems(getItems());
         table.getColumns().addAll(nameColumn,serialColumn,valueColumn);
 
+        //add vBox
+
+
 
         Scene scene = new Scene(root);
         stage.setTitle("List Application");
