@@ -37,39 +37,6 @@ public class InventoryManagementApplication extends Application {
 
     }
 
-    /*public void tableView(Stage stage){
-        Stage window;
-        TableView<Item> table;
-
-        window = stage;
-        window.setTitle("The table");
-
-        //Name Column
-        TableColumn<Item, String> nameColumn = new TableColumn<>("Item Name");
-        nameColumn.setMinWidth(250);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-        TableColumn<Item, String> serialColumn = new TableColumn<>("Item Serial");
-        serialColumn.setMinWidth(200);
-        serialColumn.setCellValueFactory(new PropertyValueFactory<>("serial"));
-
-        TableColumn<Item, Double> valueColumn = new TableColumn<>("Item Value");
-        valueColumn.setMinWidth(150);
-        valueColumn.setCellValueFactory(new PropertyValueFactory<>("value"));
-
-        table = new TableView<>();
-        table.setItems(getItems());
-        table.getColumns().addAll(nameColumn,serialColumn,valueColumn);
-
-        //add vBox
-        VBox vBox = new VBox();
-        vBox.getChildren().addAll(table);
-
-        Scene box = new Scene(vBox);
-        window.setScene(box);
-        window.show();
-    }*/
-
     public static void main(String[] args) {
         launch(args);
     }
