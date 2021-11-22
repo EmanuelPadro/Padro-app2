@@ -65,8 +65,7 @@ public class ListAppController {
             Item item = Items.get(i);
             if(item.getSerial().equals(serialID)){
                 Item newItem = operations.createItem(name, serial, value);
-
-                if(operations.itemCheck(newItem, Items)){
+                if(newItem != null){
                     Items.set(Items.indexOf(item),newItem);
                     tableView.setItems(Items);
                 }else{
