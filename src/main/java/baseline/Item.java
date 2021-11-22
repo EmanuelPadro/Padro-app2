@@ -14,8 +14,9 @@ public class Item {
     private String name;
 
     public Item() {
-        this(1,"yo","ho");
+        this(-1,null,null);
     }
+
     public Item(double iValue, String iSerial, String iName){
         this.value = iValue;
         serial = iSerial;

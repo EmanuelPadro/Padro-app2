@@ -21,8 +21,6 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class InventoryManagementApplication extends Application {
-    Stage window;
-    TableView<Item> table;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -39,15 +37,5 @@ public class InventoryManagementApplication extends Application {
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    public ObservableList<Item> getItems(){
-        ObservableList<Item> items = FXCollections.observableArrayList();
-        items.add(new Item(2.00,"A-999-999-999","T Item"));
-        items.add(new Item(3.00,"B-999-999-999","T Video"));
-        items.add(new Item(4.00,"C-999-999-999","T Money"));
-
-        return items;
-
     }
 }

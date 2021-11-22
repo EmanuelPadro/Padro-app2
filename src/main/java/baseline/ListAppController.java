@@ -39,8 +39,29 @@ public class ListAppController {
         String value = newItemValue.getText();
 
         Item newItem = operations.addItem(name, serial, value);
-        Items.add(newItem);
-        tableView.setItems(Items);
+        boolean issues = false;
+
+        /*This code will check for any null results and duplicate serials to
+        avoid printing erroneous input*/
+        if (newItem == null ){
+            issues = true;
+        }else{
+            for (Item item : Items) {
+                if (item.getSerial().equals(newItem.getSerial())) {
+                    issues = true;
+                    operations.errorManager("Duplicate Serial");
+                    break;
+                }
+            }
+        }
+
+        //checks if there issues and prints otherwise
+        if(!issues){
+            Items.add(newItem);
+            tableView.setItems(Items);
+        }else{
+            operations.errorManager("Failed to add Item");
+        }
     }
 
     public void RemoveItem(ActionEvent actionEvent) {
