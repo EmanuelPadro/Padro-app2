@@ -31,7 +31,6 @@ public class Item {
         return value;
     }
 
-
     public String getSerial() {
         return serial;
     }
@@ -48,12 +47,3 @@ public class Item {
         this.name = name;
     }
 }
-
-/*
-<items>
-<FXCollections fx:factory="observableArrayList">
-    <Item value="1" />
-
-</FXCollections>
-</items>
-*/

@@ -54,7 +54,6 @@ public class ListAppController {
                 }
             }
         }
-
         //checks if there issues and prints otherwise
         if(!issues){
             Items.add(newItem);
@@ -65,10 +64,14 @@ public class ListAppController {
     }
 
     public void RemoveItem(ActionEvent actionEvent) {
-
+        String serialID = editItemID.getText();
+        /*The line bellow is a simplified for(){if(){}} loop that will
+        items for the serial and delete it*/
+        Items.removeIf(item -> item.getSerial().equals(serialID));
     }
 
     public void editItem(ActionEvent actionEvent) {
+
     }
 
     public void displayItems(ActionEvent actionEvent) {

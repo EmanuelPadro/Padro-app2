@@ -6,13 +6,18 @@ package baseline;
  *  Copyright 2021 Emanuel Padro
  */
 
+
+//"^[a-zA-Z]+\s*$"
 public class Operations {
 
     public Item addItem(String name, String serial, String iValue){
         Item newItem = new Item();
 
         //Will check name Input
-        if(name.length() >= 2 && name.length() <= 256 && name.matches("^[a-zA-Z]*$")){
+        name = name.trim();
+        name = name.replaceAll("\\s+"," ");
+
+        if(name.length() >= 2 && name.length() <= 256 && name.matches("^[a-zA-Z ]*$")){
             newItem.setName(name);
         }else{
             errorManager("Input Name Wrong");

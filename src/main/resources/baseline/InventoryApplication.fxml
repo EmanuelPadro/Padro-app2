@@ -13,6 +13,8 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.collections.FXCollections?>
 <?import baseline.Item?>
+
+
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0"
           prefWidth="884.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
           fx:controller="baseline.ListAppController">
@@ -38,7 +40,7 @@
     </rowConstraints>
     <TextField fx:id="newItemSerial" promptText="Item Serial" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
     <TextField fx:id="newItemName" promptText="Item Name" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-    <TextField fx:id="editItemID" promptText="Item Name" GridPane.columnIndex="5"/>
+    <TextField fx:id="editItemID" promptText="Edit Item Serial" GridPane.columnIndex="5"/>
     <TextField fx:id="editSerial" promptText="New Serial" GridPane.columnIndex="6" GridPane.rowIndex="1"/>
     <TextField fx:id="editName" promptText="New Name" GridPane.columnIndex="6"/>
     <Button fx:id="addItemButton" mnemonicParsing="false" onAction="#addItem" text="Add Item" GridPane.rowIndex="1"/>
@@ -46,18 +48,12 @@
             GridPane.columnIndex="5" GridPane.rowIndex="2"/>
     <Button fx:id="editItemButton" mnemonicParsing="false" onAction="#editItem" text="Edit Item Above"
             GridPane.columnIndex="5" GridPane.rowIndex="1"/>
-    <Button fx:id="displayItemsButton" mnemonicParsing="false" onAction="#displayItems" text="Display Items"
-            GridPane.columnIndex="6" GridPane.rowIndex="3"/>
     <Button fx:id="removeAllButton" mnemonicParsing="false" onAction="#removeAll" text="Clear All Items"
             GridPane.columnIndex="6" GridPane.rowIndex="4"/>
-    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sort by:" GridPane.rowIndex="2"/>
     <TextField fx:id="newItemValue" promptText="Item Value" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
     <TextField fx:id="editValue" promptText="New Value" GridPane.columnIndex="6" GridPane.rowIndex="2"/>
-    <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-    <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
     <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="6" GridPane.rowIndex="3"
                GridPane.rowSpan="6">
-
         <columns>
             <TableColumn prefWidth="150.0" text="Item Name">
                 <cellValueFactory>
@@ -77,13 +73,10 @@
         </columns>
         <items>
             <FXCollections fx:factory="observableArrayList">
-                <Item name="Test Name" value="1"
-                      serial="A-xxx-xxx-xxx"/>
+                <Item name="Test Name" value="1" serial="A-xxx-xxx-xxx"/>
             </FXCollections>
         </items>
     </TableView>
-
-    <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Manager" GridPane.columnSpan="3">
         <font>
             <Font size="24.0"/>
