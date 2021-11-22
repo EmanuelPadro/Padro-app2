@@ -7,10 +7,12 @@ package baseline;
  */
 
 
+import javafx.collections.ObservableList;
+
 //"^[a-zA-Z]+\s*$"
 public class Operations {
 
-    public Item addItem(String name, String serial, String iValue){
+    public Item createItem(String name, String serial, String iValue){
         Item newItem = new Item();
 
         //Will check name Input
@@ -52,6 +54,28 @@ public class Operations {
         return newItem;
     }
 
+    public boolean itemCheck(Item createdItem, ObservableList<Item> Items){
+        boolean issues = false;
+
+        /*This code will check for any null results and duplicate serials to
+        avoid printing erroneous input*/
+
+        if (createdItem == null ){
+            issues = true;
+        }else{
+            for (Item item : Items) {
+                if (item.getSerial().equals(createdItem.getSerial())) {
+                    issues = true;
+                    errorManager("Duplicate Serial");
+                    break;
+                }
+            }
+        }
+        return !issues;
+    }
+
+
+
     public void errorManager(String error){
         //will check error Num for ID and print out statement where needed
         if(error.equals("Input Name Wrong")){
@@ -72,6 +96,9 @@ public class Operations {
         }
         if(error.equals("Duplicate Serial")){
             System.out.println("There is already an Item with that Serial #");
+        }
+        if(error.equals("Failed to Add Edit Item")){
+            System.out.println("Failed to edit item please fix errors and try again");
         }
     }
 
