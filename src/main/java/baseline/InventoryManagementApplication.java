@@ -25,7 +25,7 @@ public class InventoryManagementApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root =
-                FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListApplication.fxml")));
+                FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InventoryApplication.fxml")));
         Scene scene = new Scene(root);
         stage.setTitle("List Application");
         stage.setScene(scene);
