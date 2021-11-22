@@ -15,19 +15,34 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.Objects;
 
 public class InventoryManagementApplication extends Application {
-
+    Stage window;
     TableView<Item> table;
-
 
     @Override
     public void start(Stage stage) throws Exception {
         Parent root =
                 FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ListApplication.fxml")));
+        Scene scene = new Scene(root);
+        stage.setTitle("List Application");
+        stage.setScene(scene);
+        stage.show();
+
+
+
+    }
+
+    /*public void tableView(Stage stage){
+        Stage window;
+        TableView<Item> table;
+
+        window = stage;
+        window.setTitle("The table");
 
         //Name Column
         TableColumn<Item, String> nameColumn = new TableColumn<>("Item Name");
@@ -47,15 +62,13 @@ public class InventoryManagementApplication extends Application {
         table.getColumns().addAll(nameColumn,serialColumn,valueColumn);
 
         //add vBox
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(table);
 
-
-
-        Scene scene = new Scene(root);
-        stage.setTitle("List Application");
-        stage.setScene(scene);
-        stage.show();
-
-    }
+        Scene box = new Scene(vBox);
+        window.setScene(box);
+        window.show();
+    }*/
 
     public static void main(String[] args) {
         launch(args);
