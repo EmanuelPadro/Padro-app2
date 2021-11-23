@@ -9,6 +9,7 @@ package baseline;
 
 import javafx.collections.ObservableList;
 
+import java.io.*;
 import java.util.ArrayList;
 
 //"^[a-zA-Z]+\s*$"
@@ -71,6 +72,25 @@ public class Operations {
         return !issues;
     }
 
+    public void fileCreator(String filename, ObservableList<Item> Items) throws IOException {
+        File file = new File("D:\\emanu\\object oriented\\Projects Folder\\Padro-app2\\Docs\\test.txt");
+        boolean result;
+        try{
+            if(file.createNewFile()) {
+                System.out.println("File made");
+            }else{
+                System.out.println("File exists");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //FileOutputStream stream = new FileOutputStream(file,true);
+        //stream.write();
+
+    }
+
+
+
     ArrayList<String> errors = new ArrayList<>();
 
     public void errorManager(String error){
@@ -104,6 +124,10 @@ public class Operations {
         if(error.equals("Failed to Add Edit Item")){
             System.out.println("Failed to edit item please fix errors and try again");
             errors.add("Failed to edit item please fix errors and try again\n");
+        }
+        if(error.equals("File Exists")){
+            System.out.println("File already exists");
+            errors.add("File already exists\n");
         }
     }
 

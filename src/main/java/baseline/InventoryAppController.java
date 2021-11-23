@@ -10,6 +10,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 
+import java.io.File;
+import java.io.IOException;
+
 public class InventoryAppController {
     public TextField newItemSerial;
     public TextField newItemName;
@@ -96,8 +99,13 @@ public class InventoryAppController {
     }
 
     public void load(ActionEvent actionEvent) {
+
     }
 
-    public void save(ActionEvent actionEvent) {
+    public void save(ActionEvent actionEvent) throws IOException {
+        String filename = saveFileName.getText();
+
+        operations.fileCreator(filename,Items);
+
     }
 }

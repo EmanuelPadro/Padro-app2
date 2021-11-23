@@ -7,8 +7,12 @@ package baseline;
 
 import javafx.beans.property.SimpleStringProperty;
 
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
 //This class is the blueprint for all items
-public class Item {
+public class Item implements Serializable {
     private double value;
     private String serial;
     private String name;
@@ -46,4 +50,12 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+
+    private void writeItems(ObjectOutputStream out) throws IOException {
+        out.writeObject(getName());
+        out.writeObject(getSerial());
+        out.writeObject(getValue());
+    }
+
+
 }
