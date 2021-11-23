@@ -18,7 +18,7 @@ public class Operations {
     public Item createItem(String name, String serial, String iValue){
         Item newItem = new Item();
 
-        //Will check name Input
+        //Will check name Input to match length
         name = name.trim();
         name = name.replaceAll("\\s+"," ");
 
@@ -27,14 +27,14 @@ public class Operations {
         }else{
             errorManager("Input Name Wrong");
         }
-        //will check serial code Input
+        //will check serial code Input to match
         if(serial.matches("^[A-Z]-\\d{3}-\\d{3}-\\d{3}")){
             newItem.setSerial(serial);
         }else{
             errorManager("Input non Serial Code");
         }
 
-        //Will check Value Input
+        //Will check Value Input to match a decimal or single number
         if(iValue.matches("\\d+(?:\\.\\d+)?")){
             double value = Double.parseDouble(iValue);
             if( value < 0){
@@ -49,6 +49,7 @@ public class Operations {
         return newItem;
     }
 
+    //Item checks purpose is to check the final details of the item to be sure of any errors before adding
     public boolean itemCheck(Item createdItem, ObservableList<Item> Items){
         boolean issues = false;
 
@@ -72,19 +73,28 @@ public class Operations {
         return !issues;
     }
 
+    //Will create a file when given a path in the form of "path\nameOfFile.txt"
     public void fileCreator(String filename, ObservableList<Item> Items) throws IOException {
         File file = new File(filename);
+        //This will check and remove preexisting saved info when saving
+        if(file.delete()){
+            System.out.println("File in place deleted");
+        }else{
+            System.out.println("Directory Empty no file deleted");
+        }
 
+        //will create file
         try{
             if(file.createNewFile()) {
                 System.out.println("File made");
             }else{
-                System.out.println("File exists");
+                System.out.println("File already exists");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        //Transfer information encoded to txt file
         FileOutputStream fos = new FileOutputStream(file, true);
         ByteArrayOutputStream bos =new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -101,6 +111,7 @@ public class Operations {
 
     public List<Item> fileReader(String fileName)  {
 
+        //Will read file then package items to add in the controller to observable list
         try ( InputStream fis = new FileInputStream(fileName);
               ObjectInputStream oin = new ObjectInputStream(fis)
         ){
