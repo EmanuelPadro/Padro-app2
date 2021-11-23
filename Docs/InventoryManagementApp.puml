@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+class InventoryManagementApplication{
++Main
++start
+}
+class InventoryAppController{
+-newItemSerial:TextField
+-newItemName
+-newItemValue
+-editItemID
+-editSerial
+-editName
+-editValue
+--
+-addItemButton: Button
+-removeItemButton
+-editItemButton
+-removeAllButton
+--
+-tableView:TableView<Item>
+--
+-itemNameColumn: TableColumn
+-itemSerialColumn
+-itemValueColumn
+--
+-Item: ObservableList<Item>
+-operations: Operations
+--
++addItem
++removeItem
++editItem
++removeAll
+}
+
+class Operations{
++createItem:Item
++itemCheck:boolean
++errorManager
+}
+
+class Item {
+-value:Double
+-serial:String
+-name:String
+--
++setValue
++getValue:Double
++setSerial
++getSerial:String
++setName
++getName:String
+}
+
+InventoryAppController - Operations
+Item --* InventoryAppController
+InventoryAppController -- InventoryManagementApplication
+@enduml

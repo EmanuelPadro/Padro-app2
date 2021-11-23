@@ -13,7 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class ListAppController {
+public class InventoryAppController {
     public TextField newItemSerial;
     public TextField newItemName;
     public TextField newItemValue;
@@ -27,7 +27,6 @@ public class ListAppController {
     public Button removeItemButton;
     public Button editItemButton;
 
-    public Button displayItemsButton;
     public Button removeAllButton;
     public TableView<Item> tableView;
     public TableColumn itemNameColumn;

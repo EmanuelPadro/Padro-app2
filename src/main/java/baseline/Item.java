@@ -27,7 +27,7 @@ public class Item {
         this.value = value;
     }
 
-    public double getValue() {
+    public Double getValue() {
         return value;
     }
 
