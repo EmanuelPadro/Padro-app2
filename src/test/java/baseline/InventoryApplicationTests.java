@@ -5,6 +5,10 @@ import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
 public class InventoryApplicationTests {
 
     //This tests will test all operations methods as these are the most important
@@ -66,6 +70,43 @@ public class InventoryApplicationTests {
     }
 
     @Test
-    void saveLoadTest(){}
+    void saveLoadTest(){
+        Operations testOperations = new Operations();
+        ObservableList<Item> testItems = FXCollections.observableArrayList();
+        String path = "D:\\emanu\\object oriented\\Projects Folder\\Padro-app2\\src\\test\\resources\\testing.txt";
+        ObservableList<Item> compareItem = FXCollections.observableArrayList();
+
+        File expectedfile = new File(path);
+        if(expectedfile.delete()){
+            System.out.println("Testing Message: saveLoadTest file was deleted");
+        }
+
+
+        Item testItem4 = testOperations.createItem("Helmet", "A-666-666-666", "90");
+        Item testItem5 = testOperations.createItem("Kunai", "A-444-666-444", "96");
+
+        testItems.add(testItem4);
+        testItems.add(testItem5);
+        compareItem.add(testItem4);
+        compareItem.add(testItem5);
+
+        try {
+            testOperations.fileCreator(path, testItems);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<Item> loadedItems = testOperations.fileReader(path);
+        testItems.remove(0,testItems.size());
+        testItems.addAll(loadedItems);
+
+        //These assertions compare the items saved vs the ones loaded
+        Assertions.assertEquals(compareItem.get(0).getName(),testItems.get(0).getName());
+        Assertions.assertEquals(compareItem.get(0).getSerial(),testItems.get(0).getSerial());
+        Assertions.assertEquals(compareItem.get(0).getValue(),testItems.get(0).getValue());
+        Assertions.assertEquals(compareItem.get(1).getName(),testItems.get(1).getName());
+        Assertions.assertEquals(compareItem.get(1).getSerial(),testItems.get(1).getSerial());
+        Assertions.assertEquals(compareItem.get(1).getValue(),testItems.get(1).getValue());
+
+    }
 
 }
