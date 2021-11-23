@@ -43,7 +43,25 @@ public class InventoryApplicationTests {
     }
 
     @Test
-    void TestErrorManager(){
+    void TestErrorManagement(){
+        //This Test is made to test the error management process
         Operations testOperations = new Operations();
+        testOperations.errorManager("Input NonNumber");
+        testOperations.errorManager("Failed to add Item");
+
+        //will test two errors for proper output
+        String testErrors = testOperations.returnErrors();
+        String expectedErrors = """
+                Please enter a number for the item Value
+                 Failed to add Item to Inventory
+                """;
+        Assertions.assertEquals(expectedErrors,testErrors);
+
+        //Will test errors is cleared correctly
+        testOperations.clearErrors();
+        testErrors = testOperations.returnErrors();
+        Assertions.assertEquals("",testErrors);
+
+
     }
 }
