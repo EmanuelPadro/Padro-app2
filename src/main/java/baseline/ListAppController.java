@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -29,6 +30,9 @@ public class ListAppController {
     public Button displayItemsButton;
     public Button removeAllButton;
     public TableView<Item> tableView;
+    public TableColumn itemNameColumn;
+    public TableColumn itemSerialColumn;
+    public TableColumn itemValueColumn;
 
     ObservableList<Item> Items = FXCollections.observableArrayList();
     Operations operations = new Operations();
@@ -86,6 +90,12 @@ public class ListAppController {
         }
     }
 
+    /*<items>
+            <FXCollections fx:factory="observableArrayList">
+                <Item name="Test Name" value="1" serial="A-xxx-xxx-xxx"/>
+            </FXCollections>
+        </items>
+    */
     public void removeAll(ActionEvent actionEvent) {
         Items.remove(0,Items.size());
     }

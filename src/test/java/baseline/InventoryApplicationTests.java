@@ -16,6 +16,7 @@ public class InventoryApplicationTests {
         Item testItem1 = new Item(10.0,"A-999-999-999","Amogus Plush");
         Item item = testOperations.createItem("Amogus Plush","A-999-999-999","10");
 
+        //These assertions check whether the created item by the function matches the input given to it
         Assertions.assertEquals(testItem1.getName(),item.getName());
         System.out.println("Names: " + testItem1.getName() + " |VS| " + item.getName());
         Assertions.assertEquals(testItem1.getSerial(),item.getSerial());
@@ -33,14 +34,16 @@ public class InventoryApplicationTests {
 
         //This assertion will send a item to the item checker and expect a true boolean value
         Assertions.assertTrue(testOperations.itemCheck(testItem1, testItems));
+        System.out.println(" first item check is: " + testOperations.itemCheck(testItem1,testItems));
 
         //This tests if item checker catches duplicate serials
         testItems.add(testItem1);
         Assertions.assertFalse(testOperations.itemCheck(testItem1,testItems));
+        System.out.println("Second item check is: " + testOperations.itemCheck(testItem1,testItems));
     }
 
     @Test
     void TestErrorManager(){
-
+        Operations testOperations = new Operations();
     }
 }

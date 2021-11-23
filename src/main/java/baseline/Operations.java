@@ -9,6 +9,8 @@ package baseline;
 
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 //"^[a-zA-Z]+\s*$"
 public class Operations {
 
@@ -77,8 +79,9 @@ public class Operations {
 
 
     public void errorManager(String error){
+        ArrayList<String> errors = new ArrayList<>();
         //will check error Num for ID and print out statement where needed
-        if(error.equals("Input Name Wrong")){
+        if ("Input Name Wrong".equals(error)) {
             System.out.println("Please enter a name between 2 and 256 characters");
         }
         if(error.equals("Input NonNumber")){
