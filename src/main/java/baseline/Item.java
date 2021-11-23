@@ -9,15 +9,15 @@ import javafx.beans.property.SimpleStringProperty;
 
 //This class is the blueprint for all items
 public class Item {
-    private double value;
+    private Double value;
     private String serial;
     private String name;
 
     public Item() {
-        this(-1,null,null);
+        this(null,null,null);
     }
 
-    public Item(double iValue, String iSerial, String iName){
+    public Item(Double iValue, String iSerial, String iName){
         this.value = iValue;
         serial = iSerial;
         name = iName;
