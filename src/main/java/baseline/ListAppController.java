@@ -64,6 +64,17 @@ public class ListAppController {
         for(int i = 0; i < Items.size(); i++){
             Item item = Items.get(i);
             if(item.getSerial().equals(serialID)){
+
+                if(name.isBlank()){
+                    name = item.getName();
+                }
+                if(serial.isBlank()){
+                    serial = item.getSerial();
+                }
+                if(value.isBlank()){
+                    value = String.valueOf(item.getValue());
+                }
+
                 Item newItem = operations.createItem(name, serial, value);
                 if(newItem != null){
                     Items.set(Items.indexOf(item),newItem);
