@@ -28,7 +28,7 @@ public class Operations {
             errorManager("Input Name Wrong");
         }
         //will check serial code Input to match
-        if(serial.matches("^[A-Z]-\\d{3}-\\d{3}-\\d{3}")){
+        if(serial.matches("^[A-Z]-[A-Z0-9]{3}-[A-Z0-9]{3}-[A-Z0-9]{3}")){
             newItem.setSerial(serial);
         }else{
             errorManager("Input non Serial Code");
