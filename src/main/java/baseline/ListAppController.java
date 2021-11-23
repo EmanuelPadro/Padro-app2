@@ -86,9 +86,7 @@ public class ListAppController {
         }
     }
 
-    public void displayItems(ActionEvent actionEvent) {
-    }
-
     public void removeAll(ActionEvent actionEvent) {
+        Items.remove(0,Items.size());
     }
 }
