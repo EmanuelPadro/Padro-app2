@@ -26,9 +26,6 @@ public class InventoryAppController {
 
     public Button removeAllButton;
     public TableView<Item> tableView;
-    public TableColumn itemNameColumn;
-    public TableColumn itemSerialColumn;
-    public TableColumn itemValueColumn;
     public Button saveButton;
     public Button loadButton;
     public TextField saveFileName;
