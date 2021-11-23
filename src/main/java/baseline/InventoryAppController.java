@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class InventoryAppController {
     public TextField newItemSerial;
@@ -94,18 +95,21 @@ public class InventoryAppController {
         errorLog.setText(operations.returnErrors());
         operations.clearErrors();
     }
+
     public void removeAll(ActionEvent actionEvent) {
         Items.remove(0,Items.size());
     }
 
-    public void load(ActionEvent actionEvent) {
-
+    public void load(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+        String filename = loadFileName.getText();
+        List<Item> readItems = operations.fileReader(filename);
+        Items.remove(0,Items.size());
+        Items.addAll(readItems);
+        tableView.setItems(Items);
     }
 
     public void save(ActionEvent actionEvent) throws IOException {
         String filename = saveFileName.getText();
-
         operations.fileCreator(filename,Items);
-
     }
 }

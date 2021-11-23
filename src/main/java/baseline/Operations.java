@@ -11,8 +11,8 @@ import javafx.collections.ObservableList;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
-//"^[a-zA-Z]+\s*$"
 public class Operations {
 
     public Item createItem(String name, String serial, String iValue){
@@ -28,7 +28,7 @@ public class Operations {
             errorManager("Input Name Wrong");
         }
         //will check serial code Input
-        if(serial.matches("^[A-Z]{1}-\\d{3}-\\d{3}-\\d{3}")){
+        if(serial.matches("^[A-Z]-\\d{3}-\\d{3}-\\d{3}")){
             newItem.setSerial(serial);
         }else{
             errorManager("Input non Serial Code");
@@ -74,7 +74,7 @@ public class Operations {
 
     public void fileCreator(String filename, ObservableList<Item> Items) throws IOException {
         File file = new File("D:\\emanu\\object oriented\\Projects Folder\\Padro-app2\\Docs\\test.txt");
-        boolean result;
+
         try{
             if(file.createNewFile()) {
                 System.out.println("File made");
@@ -84,9 +84,39 @@ public class Operations {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //FileOutputStream stream = new FileOutputStream(file,true);
-        //stream.write();
 
+        FileOutputStream fos = new FileOutputStream(file, true);
+        ByteArrayOutputStream bos =new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+        List<Item> listItems = new ArrayList<>(Items);
+        oos.writeObject(listItems);
+        byte[] bytes = bos.toByteArray();
+
+
+        fos.write(bytes);
+        fos.close();
+
+    }
+
+    public List<Item> fileReader(String filename)  {
+        String fileName = "D:\\emanu\\object oriented\\Projects Folder\\Padro-app2\\Docs\\test.txt";
+
+        try ( InputStream fis = new FileInputStream(fileName);
+              ObjectInputStream oin = new ObjectInputStream(fis)
+        ){
+            byte[] fileContent = new byte[(int) filename.length()];
+            ByteArrayInputStream bis = new ByteArrayInputStream(fileContent);
+            List<Item> readItems = (List<Item>) oin.readObject();
+
+            readItems.forEach(System.out::println);
+
+            return readItems;
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

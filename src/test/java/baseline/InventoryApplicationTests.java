@@ -64,4 +64,8 @@ public class InventoryApplicationTests {
 
 
     }
+
+    @Test
+    void saveLoadTest(){}
+
 }
