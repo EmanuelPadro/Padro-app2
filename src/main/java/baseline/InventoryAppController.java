@@ -8,10 +8,7 @@ package baseline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 public class InventoryAppController {
     public TextField newItemSerial;
@@ -32,6 +29,11 @@ public class InventoryAppController {
     public TableColumn itemNameColumn;
     public TableColumn itemSerialColumn;
     public TableColumn itemValueColumn;
+    public Button saveButton;
+    public Button loadButton;
+    public TextField saveFileName;
+    public TextField loadFileName;
+    public TextArea errorLog;
 
     ObservableList<Item> Items = FXCollections.observableArrayList();
     Operations operations = new Operations();
@@ -49,6 +51,8 @@ public class InventoryAppController {
         }else{
             operations.errorManager("Failed to add Item");
         }
+        errorLog.setText(operations.returnErrors());
+        operations.clearErrors();
     }
 
     public void RemoveItem(ActionEvent actionEvent) {
@@ -87,15 +91,16 @@ public class InventoryAppController {
                 }
             }
         }
+        errorLog.setText(operations.returnErrors());
+        operations.clearErrors();
     }
-
-    /*<items>
-            <FXCollections fx:factory="observableArrayList">
-                <Item name="Test Name" value="1" serial="A-xxx-xxx-xxx"/>
-            </FXCollections>
-        </items>
-    */
     public void removeAll(ActionEvent actionEvent) {
         Items.remove(0,Items.size());
+    }
+
+    public void load(ActionEvent actionEvent) {
+    }
+
+    public void save(ActionEvent actionEvent) {
     }
 }
