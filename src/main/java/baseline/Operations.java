@@ -149,8 +149,10 @@ public class Operations {
         if(error.equals("Input non Serial Code")){
             System.out.println("Please enter a serial code in the" +
                     " format A-xxx-xxx-xxx where x is letter or digit");
-            errors.add("Please enter a serial code in the" +
-                    "format A-xxx-xxx-xxx where x is a letter or digit and A a letter\n");
+            errors.add("""
+                    Please enter a serial code in theformat A-xxx-xxx-xxx\s
+                     where x is a letter or digit and A a letter
+                    """);
         }
         if(error.equals("Failed to add Item")){
             System.out.println("Failed to add Item to Inventory");
@@ -170,13 +172,17 @@ public class Operations {
         }
         if(error.equals("File Read Error")){
             System.out.println("Error reading file");
-            errors.add("Error reading file: Please Make sure you are " +
-                    "inputting the correct path to your directory and \\nameOfFile.txt at the end\n");
+            errors.add("""
+                    Error reading file: Please Make sure you are inputting the correct\s
+                     path to your directory and \\nameOfFile.txt at the end
+                    """);
         }
         if(error.equals("File Save Error")){
             System.out.println("Error saving file");
-            errors.add("Error saving file: Please Make sure you are " +
-                    "inputting the correct path to your directory and \\nameOfFile.txt at the end \n");
+            errors.add("""
+                    Error saving file: Please Make sure you are inputting the correct\s
+                     path to your directory and \\nameOfFile.txt at the end\s
+                    """);
         }
     }
 
