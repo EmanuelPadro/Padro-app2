@@ -24,6 +24,9 @@ public class InventoryAppController {
     public TextField editName;
     public TextField editValue;
 
+    public TextField saveFileName;
+    public TextField loadFileName;
+
     public Button addItemButton;
     public Button removeItemButton;
     public Button editItemButton;
@@ -32,8 +35,7 @@ public class InventoryAppController {
     public TableView<Item> tableView;
     public Button saveButton;
     public Button loadButton;
-    public TextField saveFileName;
-    public TextField loadFileName;
+
     public TextArea errorLog;
 
     ObservableList<Item> Items = FXCollections.observableArrayList();
@@ -69,6 +71,7 @@ public class InventoryAppController {
         String serial = editSerial.getText();
         String value = editValue.getText();
 
+        //These following if statements check for blank boxes to set serials to current serial in that case
         for(int i = 0; i < Items.size(); i++){
             Item item = Items.get(i);
             if(item.getSerial().equals(serialID)){
@@ -83,6 +86,7 @@ public class InventoryAppController {
                     value = String.valueOf(item.getValue());
                 }
 
+                //Finally creates item and replaces previous item with it
                 Item newItem = operations.createItem(name, serial, value);
                 if(newItem != null){
                     Items.set(Items.indexOf(item),newItem);
@@ -92,6 +96,7 @@ public class InventoryAppController {
                 }
             }
         }
+        //Prints errors at the end of doing everything
         errorLog.setText(operations.returnErrors());
         operations.clearErrors();
     }
@@ -100,16 +105,25 @@ public class InventoryAppController {
         Items.remove(0,Items.size());
     }
 
-    public void load(ActionEvent actionEvent) throws IOException, ClassNotFoundException {
+    public void load(ActionEvent actionEvent) {
         String filename = loadFileName.getText();
         List<Item> readItems = operations.fileReader(filename);
         Items.remove(0,Items.size());
         Items.addAll(readItems);
         tableView.setItems(Items);
+        errorLog.setText(operations.returnErrors());
+        operations.clearErrors();
     }
 
-    public void save(ActionEvent actionEvent) throws IOException {
+    public void save(ActionEvent actionEvent)  {
         String filename = saveFileName.getText();
-        operations.fileCreator(filename,Items);
+        try {
+            operations.fileCreator(filename,Items);
+        } catch (IOException e) {
+            e.printStackTrace();
+            operations.errorManager("File Save Error");
+        }
+        errorLog.setText(operations.returnErrors());
+        operations.clearErrors();
     }
 }

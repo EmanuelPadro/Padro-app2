@@ -51,11 +51,5 @@ public class Item implements Serializable {
         this.name = name;
     }
 
-    private void writeItems(ObjectOutputStream out) throws IOException {
-        out.writeObject(getName());
-        out.writeObject(getSerial());
-        out.writeObject(getValue());
-    }
-
 
 }

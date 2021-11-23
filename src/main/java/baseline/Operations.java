@@ -115,8 +115,6 @@ public class Operations {
         try ( InputStream fis = new FileInputStream(fileName);
               ObjectInputStream oin = new ObjectInputStream(fis)
         ){
-            byte[] fileContent = new byte[(int) fileName.length()];
-            ByteArrayInputStream bis = new ByteArrayInputStream(fileContent);
             List<Item> readItems = (List<Item>) oin.readObject();
 
             readItems.forEach(System.out::println);
@@ -125,6 +123,7 @@ public class Operations {
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
+            errorManager("File Read Error");
         }
         return null;
     }
@@ -134,7 +133,7 @@ public class Operations {
     ArrayList<String> errors = new ArrayList<>();
 
     public void errorManager(String error){
-        //will check error Num for ID and print out statement where needed
+        //will check error Num for ID and add appropriate error statement to list of errors
         if ("Input Name Wrong".equals(error)) {
             System.out.println("Please enter a name between 2 and 256 characters");
             errors.add("Please enter a name between 2 and 256 characters\n");
@@ -169,15 +168,27 @@ public class Operations {
             System.out.println("File already exists");
             errors.add("File already exists\n");
         }
+        if(error.equals("File Read Error")){
+            System.out.println("Error reading file");
+            errors.add("Error reading file: Please Make sure you are " +
+                    "inputting the correct path to your directory and \\nameOfFile.txt at the end\n");
+        }
+        if(error.equals("File Save Error")){
+            System.out.println("Error saving file");
+            errors.add("Error saving file: Please Make sure you are " +
+                    "inputting the correct path to your directory and \\nameOfFile.txt at the end \n");
+        }
     }
 
     public String returnErrors(){
+        //returns errors in a readable non array format
         return String.valueOf(errors)
                 .replace("[","")
                 .replace(",","")
                 .replace("]","");
     }
 
+    //removes all errors called after printing errors typically
     public void clearErrors(){
         errors.clear();
     }

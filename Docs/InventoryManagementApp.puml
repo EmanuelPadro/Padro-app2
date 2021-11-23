@@ -12,17 +12,18 @@ class InventoryAppController{
 -editSerial
 -editName
 -editValue
+-saveFileName
+-loadFileName
 --
 -addItemButton: Button
 -removeItemButton
 -editItemButton
 -removeAllButton
+-saveButton
+-loadButton
 --
 -tableView:TableView<Item>
---
--itemNameColumn: TableColumn
--itemSerialColumn
--itemValueColumn
+-errorLog: TextArea
 --
 -Item: ObservableList<Item>
 -operations: Operations
@@ -31,21 +32,27 @@ class InventoryAppController{
 +removeItem
 +editItem
 +removeAll
++loadButton+save
 }
 
 class Operations{
 +createItem:Item
 +itemCheck:boolean
++fileCreator
++fileReader: List<Item>
+-errors:ArrayList<String>
 +errorManager
++returnErrors: String
++clearErrors
 }
 
 class Item {
--value:Double
+-value:double
 -serial:String
 -name:String
 --
 +setValue
-+getValue:Double
++getValue:double
 +setSerial
 +getSerial:String
 +setName
