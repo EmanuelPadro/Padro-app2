@@ -50,12 +50,12 @@
     <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="5" GridPane.rowIndex="3"
                GridPane.rowSpan="6">
         <columns>
-            <TableColumn prefWidth="290.0" text="Item Name">
+            <TableColumn prefWidth="320.0" text="Item Name">
                 <cellValueFactory>
                     <PropertyValueFactory property="name"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn prefWidth="200.0" text="Serial">
+            <TableColumn prefWidth="170.0" text="Serial">
                 <cellValueFactory>
                     <PropertyValueFactory property="serial"/>
                 </cellValueFactory>
